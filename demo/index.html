@@ -6,23 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link href='http://fonts.googleapis.com/css?family=Mr+Dafoe|Mrs+Sheppards|VT323' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
   <body>
     <div class='container'>
-     
-      
+     <div id="background">
         <div id='content'>
           Loading...
         </div>
-      
+      </div>
     </div>
 
     <script type="text/x-mustache-template" id="index-template">
-      <h2>{{ name }}</h2>
+      <div id="logo_container"><h2>{{{ name }}}</h2></div>
+      <div id="time_container"></div>
+      <div id="startbutton_container"></div>
+      <div id="game_container"></div>
+    </script>
+    
+    <script type="text/x-mustache-template" id="timer-template">
+      <h2>{{time}}</h2>
     </script>
     
     <script src="js/jquery.js"></script>
