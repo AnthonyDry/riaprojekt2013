@@ -17,40 +17,60 @@
 	FastFingerz.HelloWorld = Backbone.Model.extend({
 		name: function(){ return "&nbsp;Fast Fingerz";}
 	});
+	
 	// model for keeping track of the time.
 	FastFingerz.Timer = Backbone.Model.extend({
-		defaults:
-		{
-			"time": "00:00:00",
-			"error":"!ERROR! "
+		initialize: function(){
+		//_.bindAll(this, 'UpdateTimer' 'name' 'm' 's' 'ms');
+		
 		},
-		StartTimer:function()
-		{
-			var milliSeconds = 0;
-			var seconds = 0;
-			var minutes = 0;
-			var interval = setInterval(function(){
-			milliSeconds++;
-			if(milliSeconds >= 100)
+		
+		UpdateTimer: function(){
+			setInterval(this.onTick.bind(this),10);
+		},
+		//this code needs to be fixed it looks terrible.
+		onTick:function(){
+			var s = this.get('s');
+			var m = this.get('m');
+			var ms = this.get('ms');
+			ms++;
+			
+			if(ms>99)
 			{
-				seconds++;
-				milliSeconds = 0;
-				if(seconds >= 60)
-				{
-					seconds = 0;
-					minutes++;
-					if(minutes >= 100)
-					{
-						//TODO: implement something smart.
-						minutes = 99;
-					}
-				}
+				ms = 00;
+				s++;
+				
 			}
-			this.set('time', minutes+':'+seconds+':'+milliseconds);	
-			},10);
+			if(s>59)
+			{
+				s = 00;
+				m++;
+			}
+		
+			if(m>99)
+			{
+				//TODO: something better than this.
+				m = 99;
+			}
+			this.set('ms', ms);
+			this.set('s', s);
+			this.set('m', m);
+			if(ms<10)
+			{
+				ms = "0"+ms;
+			}
+			if(s<10)
+			{
+				s = "0"+s;
+			}
+			if(m<10)
+			{
+				m = "0"+m;
+			}
+			this.set('name', m+':'+s+':'+ms);
 			
 		},
-		time: ""
+		
 	});
 	
 	//My container view i guess this view will render thruout my application and init other sub views.
@@ -60,8 +80,6 @@
     
     render: function() {
       this.$el.html(this.template(this));
-      var UItimer = new FastFingerz.Index.Timer();
-      this.$('#time_container').append(UItimer.render().el);
       return this;
     },
     name: function() {
@@ -69,22 +87,37 @@
     }
   });
   //View for the timer which instances a new model with keep track of the time. and render it.
-  FastFingerz.Index.Timer = Backbone.View.extend({
+  FastFingerz.TimerView = Backbone.View.extend({
   	template: template("timer"),
   	model: new FastFingerz.Timer(),
   	initialize: function(){
-    _.bindAll(this, "render");
-    this.model.bind('all', this.render, this);
-    this.model.StartTimer();
-  },
+	  	_.bindAll(this)
+	    this.model.on('change', this.render, this);
+	    this.model.set('name', '00:00:00');
+	    this.model.set('m', '0');
+	    this.model.set('s', '0');
+	    this.model.set('ms', '0');
+	    //this.StartTimer();
+  	},
+  	events:{
+  		"click": "StartTimer"
+  	},
   	render:function(){
   		this.$el.html(this.template(this));
   		return this;
   	},
   	time:function()
   	{
-  		return this.model.get('time');
+  		return this.model.get('name');
+  	},
+  	StartTimer:function()
+  	{
+  		
+  		this.model.UpdateTimer();	
   	}
+			
+	
+	
   });
   
   
@@ -95,10 +128,13 @@
     routes: {
       "": "index"
     },
+    //this router instances mulitple views seens i dont want to re render the whole page just diffrent elements. and i figure out this must be one of the bettfer ways of doing this.
     index: function() {
-      var view = new FastFingerz.Index();
+      var logo = new FastFingerz.Index();
+      var counter = new FastFingerz.TimerView();
       this.el.empty();
-      this.el.append(view.render().el);
+      this.el.append(logo.render().el);
+      this.el.append(counter.render().el);
     }
   });
 
