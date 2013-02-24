@@ -62,7 +62,7 @@ body
 	float:right;
 	height:70px;
 	width:110px;
-	background-color:none;
+	background:none;
 	background-image:url("../pics/startButtonUntouched.png");
 	background-size:110px 70px;
 	top:10px;
@@ -70,3 +70,47 @@ body
 	border:none;
 	
 }
+#game_container
+{
+	position:relative;
+	background-image:url("../pics/buttons-backplate.png");
+	width:535px;
+	height:517px;
+	top:25px;
+	left:30px;
+	display:table;
+	border-radius:5px;
+	
+}
+.gamebutton
+{
+	position:relative;
+	display:block;
+	background:none;
+	background-image:url("../pics/gamebutton_u.png");
+	width:85px;
+	height:85px;
+	border:none;
+	left:5px;
+	float:left;
+	top:5px;
+	margin:10px;
+	margin-bottom:5px;	
+}
+
+.gamebutton_active
+{
+	position:relative;
+	display:block;
+	background:none;
+	background-image:url("../pics/gameButton_a.png");
+	width:85px;
+	height:85px;
+	border:none;
+	left:5px;
+	float:left;
+	top:5px;
+	margin:10px;
+	margin-bottom:5px;	
+}
+/**Ugly css sulution to intdet problem from mustache. or whatever it is*/
