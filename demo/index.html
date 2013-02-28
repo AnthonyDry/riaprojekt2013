@@ -11,18 +11,23 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script data-main="js/main" src="js/lib/require.js"></script>
   </head>
   <body>
     <div class='container'>
      <div id="background">
         <div id='content'>
-          Loading...
+        	<div id="logo_container"></div>
+        	<div id="clock"></div>
+          	<div id="board"></div>
+          	<div id="scoreBoard"></div>
         </div>
       </div>
     </div>
 
     <script type="text/x-mustache-template" id="index-template">
-      <div id="logo_container"><h2>{{{ name }}}</h2></div>
+      
+      <div id="highscore-title"></div>
     </script>
     
     <script type="text/x-mustache-template" id="timer-template">
@@ -32,15 +37,26 @@
     
     <script type="text/x-mustache-template" id="game-template">
       <div id="game_container">{{#thepad}}{{{.}}}{{/thepad}}</div>
+      <div id="gameCounter">Number of bricks left: {{count}}</div>
+      <div id="popUpholder"></div>
     </script>
-    
-    <script src="js/jquery.js"></script>
-   
-    <script src="js/underscore.js"></script>
-    <script src="js/backbone.js"></script>
-    <script src="js/mustache.js"></script>
-    <script src="js/backbone-localstorage.js"></script>
-    <script src="js/javascript.js"></script>
-    <script>$(function() { FastFingerz.boot($('#content')); });</script>
+    <script type="text/x-mustache-template" id="popup-template">
+      <div id="blurdiv">
+      	<div id="poppuContent">
+      		<h2>YOUR HIGHSCORE:</h2>
+      		<h3>{{a_min}}.{{a_sec}}.{{a_milli}}</h3>
+      		<h4>Enter your name:</h3>
+      		<form>
+      			<input id="highscoreName" maxlength="3" type="text"/>
+      			<input id="submithighscore" value="SUBMIT" type="submit"/>
+      		</form>
+      	</div>
+      </div>
+    </script>
+     <script type="text/x-mustache-template" id="highscores-template">
+     <h2>{{name}} : {{score}}</h2>	
+     </script>
+   	
+    <!--<script>$(function() { FastFingerz.boot($('#content')); });</script>-->
   </body>
 </html>
