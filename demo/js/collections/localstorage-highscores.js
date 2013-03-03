@@ -1,28 +1,22 @@
 /**
  * @author Anthony Dry
+ * @class this is the collection for the highscores (atm its not working would love if someone fixed it in the next step of this course)
+ * @return returns an instace of the collection.
  */
 
 define([
   'underscore',
   'backbone',
-  'localstorage',
+  'backbone.localstorage',
   'models/highscoreModel'
-], function(_, Backbone, localStoreage, HighscoreModel){
+], function(_, Backbone, localStorage101, HighscoreModel){
 	var Storage = Backbone.Collection.extend({
 		model: HighscoreModel,
-    	localStorage: new Store("Fastfingerz-highscores")  
+		//this really dont want to work i know it's suppose to be localStorage101("Fast") but that ends up being an error.
+    	localStorage: new Store("Fast")  
  	});
 
   return Storage;
   
 
 });
-
-
-/*
- * 
- * FastFingerz.Storeage = Backbone.Collection.extend({
-  		model: FastFingerz.highscoreModel,
-    	localStorage: new Store("Fastfingerz-highscores")
-  	});
- */

@@ -1,12 +1,14 @@
 /**
  * @author Anthony Dry
+ * @class my Configuration and init my application.
+ * @param {string} shim Sets dependencies for my not amd libs. such ass backbone underscore ande mustache. 
  */
 
 requirejs.config({
 	paths:{
 		"jquery": "lib/jquery",
 		"backbone": "lib/backbone",
-		"localstorage": "lib/backbone-localstorage",
+		"backbone.localstorage": "lib/backbone-localstorage",
 		"underscore": "lib/underscore",
 		"mustache" : "lib/mustache"	
 	},
@@ -24,7 +26,7 @@ requirejs.config({
 			deps:['underscore', 'jquery'],
 			exports:'Backbone'
 		},
-		'localstorage':{
+		'backbone.localstorage':{
 			deps:['backbone'],
 			exports:'Backbone'
 		}

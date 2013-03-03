@@ -1,8 +1,9 @@
 /**
  * @author Anthony Dry
+ * @class UNUSED THIS IS FROM AN EARILER REVISION. KEEPING IT JUST IN CASE.
  */
 
-define([
+/*define([
   'jquery',
   'underscore',
   'backbone',
@@ -11,8 +12,9 @@ define([
 	var HighScoreItemView = Backbone.View.extend({
 	template: Mustache.compile($('#highscores-template').html()),
   	className: 'highscoreItem',
+  	el: this.el,
   	render: function(){
-  		alert('inside item');
+  		alert(this.model.name()+ ':' +this.model.highscore());
   		 this.$el.html(this.template(this));
   	},
   	name: function(){
@@ -25,27 +27,7 @@ define([
 
   return HighScoreItemView;
   
-});
-// gets info something wont make this render thats the problem as soon as i get a render back from tihis i will be all set. just need to add comments.
+});*/
+// gets info something wont make this render thats the problem as soon as i get a render back from this i will be all set. just need to add comments.
 
 
-
-/*
- * //SUBVIEW RENDERS INDIVIDUAL HIGHSCORES.
-  FastFingerz.highscoresView.item = Backbone.View.extend({
-  	template: template('highscores'),
-  	className: 'highscoreItem',
-  	render: function(){
-  		 this.$el.html(this.template(this));
-      return this;
-  	},
-  	name: function(){
-  		return this.model.name();
-  	},
-  	score: function(){
-  		return this.model.highscore();
-  	}
-  	
-  	
-  });
- */

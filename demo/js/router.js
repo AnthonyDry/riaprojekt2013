@@ -1,5 +1,8 @@
 /**
  * @author Anthony Dry
+ * @class my router class directs the users to the right views. in this case there is only an index so basically this is just like a middle man for my application 
+ * to combine the right views and models etc.
+ * @return {String} returns an instace of the router class to the app class.
  */
 define([
   'jquery',
@@ -34,7 +37,7 @@ define([
     	//Views.
     	var logoView = new LogoView();
     	var timerView = new TimerView({model:gameModel});
-    	var gameAreaView = new GameAreaView({model:gameModel});
+    	var gameAreaView = new GameAreaView({model:gameModel, collection:store});
     	var highscoreView = new HighscoreView({collection:store});
        	//Render my views
     	logoView.render();
@@ -51,15 +54,3 @@ define([
     initialize: initialize
   };
 });
-/*
-      var logo = new FastFingerz.Index();
-      var gameModel =  new FastFingerz.Game();
-      var col = new FastFingerz.Storeage(); 
-      var highscoresView = new FastFingerz.highscoresView({collection:col});
-      var counter = new FastFingerz.TimerView({model: gameModel});
-      var gameArea = new FastFingerz.GameAreaView({model: gameModel, collection: col});
-      this.el.empty();
-      this.el.append(logo.render().el);
-      this.el.append(counter.render().el);
-      this.el.append(gameArea.render().el);
-      this.el.append(highscoresView.render().el);*/

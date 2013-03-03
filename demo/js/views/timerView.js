@@ -1,5 +1,7 @@
 /**
  * @author Anthony Dry
+ * @class TimerView displays the timer and updates it on model change.
+ * @return returns a new instace of the TimerView.
  */
 define([
   'jquery',

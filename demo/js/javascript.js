@@ -1,3 +1,8 @@
+/**
+ * @author Anthony Dry
+ * @class This is a working example without require.js all the functions are packed in to one file thats been namespaced. hopefully i wount have to use this file anymore.
+ */
+
 //initzlising my global object 
 (function() {
   var FastFingerz = {};
