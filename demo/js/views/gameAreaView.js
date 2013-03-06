@@ -18,7 +18,6 @@ define([
 ], function($, _, Backbone, Mustache, PopupView){
 
   var GameAreaView = Backbone.View.extend({
-    el: $("#board"),
 	template: Mustache.compile($('#game-template').html()),
   	initialize: function()
   	{
@@ -40,7 +39,7 @@ define([
   			var m = this.model.get('m');
   			var s = this.model.get('s');
   			var ms = this.model.get('ms');
-  			var popupView = new PopupView({min:m,sec:s,milli:ms,collection: this.options.collection});
+  			var popupView = new PopupView({min:m,sec:s,milli:ms,collection: this.collection});
   			this.$('#popUpholder').append(popupView.render().el);
   			
   		}

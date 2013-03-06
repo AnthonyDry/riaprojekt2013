@@ -10,7 +10,6 @@ define([
   'mustache'
 ], function($, _, Backbone, Mustache){
 	var TimerView = Backbone.View.extend({
-	el:$('#clock'),
   	template: Mustache.compile($('#timer-template').html()),
   	initialize: function(){
 	  	_.bindAll(this)

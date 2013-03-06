@@ -19,7 +19,7 @@ define([
   		this.min = this.options.min;
   		this.sec = this.options.sec;
   		this.milli = this.options.milli;
-  		this.store = this.options.collection;
+  	
   		if(this.milli < 10)
     	{
     		this.milli = '0'+this.milli;
@@ -64,10 +64,10 @@ define([
     	else
     	{
     		
-    		this.store.create({
+    		this.collection.create({
     			name: this.$('#highscoreName').val(),
     			highscore: this.min+':'+this.sec+':'+this.milli
-    		}.toJSON());	
+    		});	
     	}
     } 
 	});

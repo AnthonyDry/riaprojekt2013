@@ -10,7 +10,7 @@ define([
 ], function($, _, Backbone, Mustache){
 
   var LogoView = Backbone.View.extend({
-    el: $("#logo_container"),
+    
 
     render: function(){
       

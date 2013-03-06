@@ -6,11 +6,12 @@
 
 requirejs.config({
 	paths:{
-		"jquery": "lib/jquery",
-		"backbone": "lib/backbone",
-		"backbone.localstorage": "lib/backbone-localstorage",
-		"underscore": "lib/underscore",
-		"mustache" : "lib/mustache"	
+		jquery: "lib/jquery",
+		underscore: "lib/underscore",
+		backbonePure: "lib/backbone",
+		"backbone.localstorage": "lib/backbone.localStorage-min",
+		mustache : "lib/mustache",
+		backbone: 'lib/optimBackbone'
 	},
 	shim:{
 		
@@ -22,18 +23,15 @@ requirejs.config({
 			deps: [],
 			exports: '_'
 		},
-		'backbone':{
+		'backbonePure':{
 			deps:['underscore', 'jquery'],
 			exports:'Backbone'
 		},
-		'backbone.localstorage':{
-			deps:['backbone'],
-			exports:'Backbone'
-		}
+		'backbone.localstorage':['backbonePure', 'underscore'],
 	},
 });
 
 //Loads my application to start making stuff happen.
-require(['app',],function(App){
-  App.initialize();
+require(['router',],function(App){
+  new App;
 });

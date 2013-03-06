@@ -15,7 +15,7 @@ define([
   
 ], function($, _, Backbone, Mustache){
 	var HighScoreView = Backbone.View.extend({
-	el:$('#scoreBoard'),
+	
   	className: 'highscoreList',
   	initialize:function(){
   		this.collect = this.options.collection;
@@ -34,6 +34,7 @@ define([
     	
     }
   });
+  
   var HighScoreItemView = Backbone.View.extend({
 	template: Mustache.compile($('#highscores-template').html()),
   	className: 'highscoreItem',

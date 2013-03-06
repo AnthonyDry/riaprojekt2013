@@ -15,42 +15,30 @@ define([
   'views/gameAreaView',
   'views/HighscoreView'
  
-], function($, _, Backbone, LogoView, TimerView, GameModel, Store, GameAreaView, HighscoreView) {
+], function($, _, Backbone, LogoView, TimerView, GameModel, Storage, GameAreaView, HighscoreView) {
   
-  var AppRouter = Backbone.Router.extend({
-    routes: {
-      // my url Root. since i dont really get this require.js thingy.
-      "": "index"
-    },
-    
-  });
-  
-  var initialize = function(){
-
-    var app_router = new AppRouter;
-    
-    app_router.on('route:index', function(){
-    	//collections
-    	var store = new Store();
+  var AppRouter = Backbone.View.extend({
+  	
+  	initialize:function(){
+  		this.render();
+  	},
+	  render:function(){
+	  	var store = new Storage();
     	//Models
     	var gameModel = new GameModel();
     	//Views.
-    	var logoView = new LogoView();
-    	var timerView = new TimerView({model:gameModel});
-    	var gameAreaView = new GameAreaView({model:gameModel, collection:store});
-    	var highscoreView = new HighscoreView({collection:store});
+    	var logoView = new LogoView({el: $("#logo_container")});
+    	var timerView = new TimerView({model:gameModel, el:$('#clock')});
+    	var gameAreaView = new GameAreaView({model:gameModel, collection:store, el: $("#board")});
+    	var highscoreView = new HighscoreView({collection:store, el:$('#scoreBoard')});
        	//Render my views
     	logoView.render();
     	timerView.render();
     	gameAreaView.render();
     	highscoreView.render();
-    	
-   	
-    });
-
-    Backbone.history.start();
-  };
-  return { 
-    initialize: initialize
-  };
+	  }
+    
+  });
+  
+  return AppRouter;
 });

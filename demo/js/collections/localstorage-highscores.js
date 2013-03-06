@@ -7,13 +7,11 @@
 define([
   'underscore',
   'backbone',
-  'backbone.localstorage',
   'models/highscoreModel'
-], function(_, Backbone, localStorage101, HighscoreModel){
+], function(_, Backbone, HighscoreModel){
 	var Storage = Backbone.Collection.extend({
 		model: HighscoreModel,
-		//this really dont want to work i know it's suppose to be localStorage101("Fast") but that ends up being an error.
-    	localStorage: new Store("Fast")  
+    	localStorage: new Backbone.LocalStorage('Fast')  
  	});
 
   return Storage;
