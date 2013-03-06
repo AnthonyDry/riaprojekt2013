@@ -18,14 +18,14 @@ define([
 	
   	className: 'highscoreList',
   	initialize:function(){
-  		this.collect = this.options.collection;
-  		this.collect.on('change', this.render, this);
-  		this.collect.fetch();
+  		
+  		this.collection.on('change', this.render, this);
+  		this.collection.fetch();
   	},
   	render: function() {
   		//TODO: Get the Highscores in the right orderer havent figured it out yet.
   		var item = null;
-     	this.collect.each(function(highscore)
+     	this.collection.each(function(highscore)
     	{
     		item = new HighscoreItemView({model: highscore});
     		this.$el.append(item.render());
