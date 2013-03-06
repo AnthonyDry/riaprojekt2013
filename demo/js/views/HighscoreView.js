@@ -27,6 +27,7 @@ define([
   		var item = null;
      	this.collection.each(function(highscore)
     	{
+    		alert(highscore.name());
     		item = new HighscoreItemView({model: highscore});
     		this.$el.append(item.render());
     	

@@ -53,7 +53,7 @@ define([
 		},
 		IsFinished:function()
 		{
-			var NUMBER_FOR_FINISH = 50
+			var NUMBER_FOR_FINISH = 10
 			//this is pretty ugly but the best i could think of atm. getting a bit stressed.
 			this.set('NumberOfPressesLeft',NUMBER_FOR_FINISH - this.get('CorrectPresses'));
 			if(this.get('CorrectPresses') >= NUMBER_FOR_FINISH)
