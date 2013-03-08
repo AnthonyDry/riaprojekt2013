@@ -1,7 +1,5 @@
-/**
- * @author Anthony Dry
- */
 
+//Gets the logo. this view is kind of pointless. sorry about that.
 define([
   'jquery',
   'underscore',
@@ -24,15 +22,3 @@ define([
 });
 
 
-/*FastFingerz.Index = Backbone.View.extend({
-    template: template('index'),
-    model: new FastFingerz.HelloWorld(),
-    
-    render: function() {
-      this.$el.html(this.template(this));
-      return this;
-    },
-    name: function() {
-      return this.model.name();
-    }
-  });*/

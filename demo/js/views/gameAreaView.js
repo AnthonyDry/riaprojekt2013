@@ -1,14 +1,6 @@
-/**
- * @author Anthony Dry
- * @class gameAreaView is the main view for this prodject it presents the game and also handles the events from click and isFinished.
- * @param {Function} render 	this function handles both the output of this view and it also instances a new view if the game is finished.
- * @param {Function} thepad 	this function sets a new randomNr if game isStarted and then gets the randomNr and set it to the button synced with the randomNr.
- *  god this was hard to explain anyway its something like that.
- * @param {Function} CheckPress	this event function check if the player pressed the right button. else its getting a penelty. 
- * usually i would prefer to have this in a model or help class and not in the view. seens the view IMO should only handle the users input and then let the model
- *  handle what the view should present next any how in backbone the model seems to only be used to store values soim getting abit confused.
- * @return returns a new instance of gameAreaView.
- */
+
+//gameAreaView is the main view for this project, it presents the game and also handles the events from click and isFinished.
+
 define([
   'jquery',
   'underscore',
@@ -19,14 +11,14 @@ define([
 
   var GameAreaView = Backbone.View.extend({
 	template: Mustache.compile($('#game-template').html()),
+	//initializes the model.
   	initialize: function()
   	{
-	  	//_.bindAll(this)
 	    this.model.on('change:IsStarted', this.render, this);
 	    this.model.set('CorrectPresses', '0');
 	    
 	},
-	  
+	//this function handles both the output of this view and it also instances a new view if the game is finished.  
   	render:function()
   	{
   		if(!this.model.IsFinished())
@@ -45,7 +37,7 @@ define([
   		}
   		
   	},
-  	
+  	//this function sets a new randomNr if game isStarted and then gets the randomNr and set it to the button synced with the randomNr. God this was hard to explain anyway its something like that.
   	thepad:function()
   	{
   		var arr = this.model.Buttons();
@@ -75,10 +67,15 @@ define([
   		}
   		return val;
   	},
+  	//Lists the events from this view.
   	events:
   	{
   		"click": "CheckPressed" 
   	},
+  	
+  	//CheckPress this event function check if the player pressed the right button. else its getting a penelty. 
+	//usually i would prefer to have this in a model or help class and not in the view. seens the view IMO should only handle the users input and then let the model
+	//handle what the view should present next any how in backbone the model seems to only be used to store values soim getting abit confused.
   	CheckPressed:function(e)
   	{
   		var targetElement = e.srcElement.id;
@@ -97,13 +94,14 @@ define([
   			this.model.set('s', sec);	
   		}
   	},
+  	//Gets number of bricks left.
   	count:function(){
   		return this.model.get('NumberOfPressesLeft');
   	}
   
    
   });
-
+//Returns an instance of the GameAreaView.
   return GameAreaView;
   
 });

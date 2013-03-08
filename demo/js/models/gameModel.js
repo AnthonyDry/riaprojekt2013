@@ -1,12 +1,5 @@
-/**
- * @author Anthony Dry
- * @class gameModel class handles most of the game logic such as holding the buttons ids and keeping track of time. it also keeps track if a game is finished.
- * @param {String} onTick 	this function kchecks if game has finished otherwise it updates the models time.
- * @param {String} NewRandomNr 	gets a new random number. nothing special at all.
- * @return returns an instace of the gameModel class
- * 
- */
 
+//gameModel class handles most of the game logic such as holding the buttons ids and keeping track of time. it also keeps track if a game is finished.
 define([
   'underscore',
   'backbone',
@@ -22,7 +15,7 @@ define([
 				setInterval(this.onTick.bind(this),10);
 			
 		},
-		//this code needs to be fixed it looks terrible.
+		//this function kchecks if game has finished otherwise it updates the models time.
 		onTick:function()
 		{
 			if(!this.get('gameIsFinsihed'))
@@ -33,7 +26,8 @@ define([
 				ms++;
 				if(ms>99){ms = 00; s++;}
 				if(s>59){s = 00; m++;}
-				if(m>99){//TODO: something better than this.
+				if(m>99){
+					//TODO: something better than this.
 					m = 99;
 				}
 				this.set('ms', ms);
@@ -46,15 +40,15 @@ define([
 			}
 			else{clearInterval(this);}	
 		},
-		
+		//returns a new random number.
 		NewRandomNumber:function()
 		{
 			return Math.floor((Math.random()*24)+0);
 		},
+		//Checks if the game is finished.
 		IsFinished:function()
 		{
-			var NUMBER_FOR_FINISH = 10
-			//this is pretty ugly but the best i could think of atm. getting a bit stressed.
+			var NUMBER_FOR_FINISH = 50
 			this.set('NumberOfPressesLeft',NUMBER_FOR_FINISH - this.get('CorrectPresses'));
 			if(this.get('CorrectPresses') >= NUMBER_FOR_FINISH)
 			{
@@ -62,10 +56,8 @@ define([
 			}
 			return false;
 		}
-  	
-
     });
-
+	//returns an instance of GameModel.
   	return GameModel;
 
 });

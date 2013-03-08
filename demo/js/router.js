@@ -1,9 +1,8 @@
-/**
- * @author Anthony Dry
- * @class my router class directs the users to the right views. in this case there is only an index so basically this is just like a middle man for my application 
- * to combine the right views and models etc.
- * @return {String} returns an instace of the router class to the app class.
- */
+//Anthony Dry
+// my router class directs the users to the right views. in this case there is only an index so basically this is just like a middle man for my application 
+//to combine the right views and models etc.
+//returns an instance of the views.
+
 define([
   'jquery',
   'underscore',
@@ -15,7 +14,7 @@ define([
   'views/gameAreaView',
   'views/HighscoreView'
  
-], function($, _, Backbone, LogoView, TimerView, GameModel, Storage, GameAreaView, HighscoreView) {
+], function($, _, Backbone, LogoView, TimerView, GameModel, Storage, GameAreaView, HighScoreView) {
   
   var AppRouter = Backbone.View.extend({
   	
@@ -24,17 +23,16 @@ define([
   	},
 	  render:function(){
 	  	var store = new Storage();
-    	//Models
     	var gameModel = new GameModel();
-    	//Views.
     	var logoView = new LogoView({el: $("#logo_container")});
     	var timerView = new TimerView({model:gameModel, el:$('#clock')});
-    	var gameAreaView = new GameAreaView({model:gameModel, collection:store, el: $("#board")});
-    	var highscoreView = new HighscoreView({collection:store, el:$('#scoreBoard')});
-       	//Render my views
+    	var gameareaView = new GameAreaView({model:gameModel, collection:store, el: $("#board")});
+    	var highscoreView = new HighScoreView({collection:store, el:$('#scoreBoard')});
+    	
+    	
     	logoView.render();
     	timerView.render();
-    	gameAreaView.render();
+    	gameareaView.render();
     	highscoreView.render();
 	  }
     

@@ -1,8 +1,6 @@
-/**
- * @author Anthony Dry
- * @class TimerView displays the timer and updates it on model change.
- * @return returns a new instace of the TimerView.
- */
+
+//TimerView displays the timer and updates it on model change.
+
 define([
   'jquery',
   'underscore',
@@ -11,6 +9,7 @@ define([
 ], function($, _, Backbone, Mustache){
 	var TimerView = Backbone.View.extend({
   	template: Mustache.compile($('#timer-template').html()),
+  	//Sets the models standard values.
   	initialize: function(){
 	  	_.bindAll(this)
 	    this.model.on('change', this.render, this);
@@ -20,11 +19,13 @@ define([
 	    this.model.set('ms', '0');
 	    this.model.set('IsStarted', false);
 	    this.model.set('gameIsFinsihed', false);
-	    //this.StartTimer();
+
   	},
+  	//eventlistener.
   	events:{
   		"click": "StartTimer"
   	},
+  	//renders the view.
   	render:function(){
   		this.$el.html(this.template(this));  		
   	},
@@ -32,13 +33,14 @@ define([
   	{
   		return this.model.get('name');
   	},
+  	//Starts the game basically.
   	StartTimer:function()
   	{
   		this.model.set('IsStarted', true);
   		this.model.UpdateTimer();			
   	}
   });
-
+//returns Instance of timerView.
   return TimerView;
   
 });

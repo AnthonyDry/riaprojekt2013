@@ -1,9 +1,7 @@
-/**
- * @author Anthony Dry
- * @class PopupView an easy view for the user to write a name for its highscore and then populate the highscoreList.
- * @param {Function} submit Checks if user wants to save its highscore. and if so creates a new object in the collection.. which is not working atm.
- * @return returns an instance of the popupView.
- */
+
+
+ //PopupView an easy view for the user to write a name for its highscore and then populate the highscoreList.
+
 define([
   'jquery',
   'underscore',
@@ -53,12 +51,13 @@ define([
     {
     	"submit": "submit"
     },
+    //submit Checks if user wants to save its highscore. and if so creates a new object in the collection.. which is not working atm.
     submit:function(e)
     {
     	
     	if(this.$('#highscoreName').val() == '')
     	{
-    		//TODO: Do a check if user really dont want to save its highscore.
+    		//TODO: Do a check if user really dont want to save its highscore. 
     		
     	}
     	else
@@ -71,6 +70,7 @@ define([
     	}
     } 
 	});
+	//returns an instance of PopupView.
   return PopupView;
   
 });

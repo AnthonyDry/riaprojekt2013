@@ -1,8 +1,6 @@
-/**
- * @author Anthony Dry
- * @class highscoreModel the model used by the collection anyhow since the collection doesnt work i dont know if this works.
- * @return an instance of highscoreModel.
- */
+
+//the model used by the collection anyhow since the collection doesnt work i dont know if this works.
+
 define([
   'underscore',
   'backbone',
@@ -17,7 +15,7 @@ define([
 		}
 
     });
-
+//returns an instance of  highscoreModel.
   	return highscoreModel;
 
 });

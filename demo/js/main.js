@@ -1,8 +1,5 @@
-/**
- * @author Anthony Dry
- * @class my Configuration and init my application.
- * @param {string} shim Sets dependencies for my not amd libs. such ass backbone underscore ande mustache. 
- */
+//Setting up require.js configs and dependency.
+ 
 
 requirejs.config({
 	paths:{

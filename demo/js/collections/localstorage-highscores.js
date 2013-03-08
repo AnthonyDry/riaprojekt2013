@@ -1,8 +1,5 @@
-/**
- * @author Anthony Dry
- * @class this is the collection for the highscores (atm its not working would love if someone fixed it in the next step of this course)
- * @return returns an instace of the collection.
- */
+
+// This is the collection for the highscores.
 
 define([
   'underscore',
@@ -13,7 +10,7 @@ define([
 		model: HighscoreModel,
     	localStorage: new Backbone.LocalStorage('Fast')  
  	});
-
+//returns an instance of the collection.
   return Storage;
   
 
